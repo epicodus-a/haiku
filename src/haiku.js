@@ -13,27 +13,84 @@ export class Haiku{
     return aStr.split(" ");
   }
 
+  //count vowels
+  countVows(aStr){
+    return aStr.match(/[aeiou]/gi).length;
+  }
 
-  doubleCons(aWord){
-    // aWord: a string
-    // return: an array of words which does not contain consecutive consonants
-    debugger;
-    let consonants = "bcdfghjklmnpqrstvwxz";
-    let singleConsWordsArr = [];
-    let doubleCons = false;
-    for(let i = 0; i < aWord.length - 1 ; i ++){
-      if(consonants.indexOf(aWord[i]) !== -1 ){
-        if(consonants.indexOf(aWord[i+1]) !== -1){
-          singleConsWordsArr.push(aWord.substring(0, i+1));
-          singleConsWordsArr.push(aWord.substring(i+1));
-          doubleCons = true;
+  //subtract 1 if e were at the end a word
+  subtractOneForE(aStr){
+    let vowelsCount = this.countVows(aStr);
+    if(aStr.endsWith('e')){
+      vowelsCount --;
+    }else{
+      return vowelsCount;
+    }
+  }
+
+ //return the number of vowels in a string, with one subtracted if there were two consecutive vowels
+  subtractOneFConstVowel(aStr){
+    let vowelCount = this.subtractOneForE(aStr);
+    if(aStr.match(/aa|oo|ee|ii|uu/gi)){
+      return vowelCount - aStr.match(/aa|oo|ee|ii|uu/gi).length
+    }else{
+      return vowelCount;
+    }
+  }
+
+  addOneForConsecConst(aStr){
+    let coutn1 = this.subtractOneFConstVowel(aStr);
+    let count2 = 0;
+    if(aStr.match(/[bcdfghjklmnpqrstvwxz]/gi)){
+      for(let i = 0; i < aStr.length - 1; i++){
+        if(aStr[i].match(/[bcdfghjklmnpqrstvwxz]/gi) && aStr[i] === aStr[i+1]){
+          count2 ++;
         }
       }
     }
-    if(!doubleCons){
-      singleConsWordsArr.push(aWord);
-    }
-    return singleConsWordsArr;
+    return coutn1 + count2;
   }
+
+
+
+  // doubleCons(start=0, aWord='appe'){
+  //   // aWord: a string with one pair of consecutive consonants
+  //   // return: an array of words which does not contain consecutive consonants
+  //   debugger;
+  //   let consonants = "bcdfghjklmnpqrstvwxz";
+  //   let singleConsWordsArr = [];
+  //   let doubleConsonant = false;
+  //   for(let i = start; i < aWord.length - 1 ; i ++){
+  //     if(consonants.indexOf(aWord[i]) !== -1 ){
+  //       if(consonants.indexOf(aWord[i+1]) !== -1){
+  //         singleConsWordsArr.push(aWord.substring(0, i+1));
+  //         start = aWord.substring(0, i+1).length;
+  //         // aWord = aWord.substring(i+1);
+  //         // doubleCons(start, aWord);
+  //         // singleConsWordsArr.push(aWord.substring(i+1));
+  //         doubleConsonant = true;
+  //       }
+  //     }
+  //   }
+  //   if(!doubleConsonant){
+  //     singleConsWordsArr.push(aWord);
+  //   }
+  //
+  //   return [singleConsWordsArr, start];
+  // }
+  //
+  //
+  // mutliDoubleCons(start, aWord){
+  //   // aWord: a string with more than one pair of consecutive consonants
+  //   // return : an array of words which does not contain consecutive consonants
+  //   let res = [];
+  //   let returnVal;
+  //   while(start < aWord.length){
+  //     returnVal = doubleCons(start, aWord));
+  //     start = returnVal[1];
+  //     res.extend(returnVal[0]);
+  //   }
+  //   return res;
+  // }
 
 }
