@@ -1,6 +1,7 @@
 import {Haiku} from "../src/Haiku";
 
 describe("Haiku", function(){
+  debugger;
   let reuseableHaiku;
   beforeEach(function(){
     reuseableHaiku = new Haiku("apple ", "banana", "orange");
@@ -16,8 +17,8 @@ describe("Haiku", function(){
     // let reuseableHaiku = new Haiku("apple ", "banana", "orange");
     expect(Array.isArray(reuseableHaiku.inputArr(reuseableHaiku.line1))).toBeTruthy();
   });
-  
+
   it("should return a word that does not have consecutive consonants", function() {
-    expect(reuseableHaiku.seperateDoubleConsonant("tea")).toBeTruthy();
+    expect(reuseableHaiku.doubleCons("appe").length).toEqual(2);
   });
 });
