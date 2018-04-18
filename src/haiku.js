@@ -23,9 +23,9 @@ export class Haiku{
     let vowelsCount = this.countVows(aStr);
     if(aStr.endsWith('e')){
       vowelsCount --;
-    }else{
-      return vowelsCount;
     }
+    return vowelsCount;
+
   }
 
  //return the number of vowels in a string, with one subtracted if there were two consecutive vowels
@@ -38,19 +38,26 @@ export class Haiku{
     }
   }
 
+  //re turn the number vowels in a string with one added if there were two consecutive consonants
   addOneForConsecConst(aStr){
     let coutn1 = this.subtractOneFConstVowel(aStr);
     let count2 = 0;
-    if(aStr.match(/[bcdfghjklmnpqrstvwxz]/gi)){
-      for(let i = 0; i < aStr.length - 1; i++){
-        if(aStr[i].match(/[bcdfghjklmnpqrstvwxz]/gi) && aStr[i] === aStr[i+1]){
-          count2 ++;
-        }
+    for(let i = 0; i < aStr.length - 1; i++){
+      if(aStr[i].match(/[bcdfghjklmnpqrstvwxz]/gi) && aStr[i] === aStr[i+1]){
+        count2 ++;
       }
     }
     return coutn1 + count2;
   }
 
+  countInASentence(aSentence){
+    let count = 0;
+    let sentenceArr = this.inputArr(aSentence);
+    sentenceArr.forEach(word => {
+      count += this.addOneForConsecConst(word);
+    });
+    return count;
+  }
 
 
   // doubleCons(start=0, aWord='appe'){

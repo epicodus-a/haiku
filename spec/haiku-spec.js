@@ -23,15 +23,20 @@ describe("Haiku", function(){
   });
 
   it("should return the number of vowels in a string, with one subtracted if there were an 'e' at the end'", function(){
-    expect(reuseableHaiku.subtractOneForE('apple')).toEqual(1);
+    expect(reuseableHaiku.subtractOneForE('same')).toEqual(1);
   });
+
 
   it("should return the number of vowels in a string, with one subtracted if there were two consecutive vowels", function(){
     expect(reuseableHaiku.subtractOneFConstVowel("footqqaaii")).toEqual(3);
   });
-
+  //
   it("should return the number of vowels in a string, with one added if there were two consecutive consonants", function(){
     expect(reuseableHaiku.addOneForConsecConst("appluue")).toEqual(3);
   });
 
+
+  it("should return syllable count when a sentence is provided", function(){
+    expect(reuseableHaiku.countInASentence("I am steven")).toEqual(4);
+  });
 });

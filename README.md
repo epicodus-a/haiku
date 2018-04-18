@@ -19,3 +19,4 @@ spec
 - Divide between two middle consonants.
 -  the letter before the 'le' a vowel = no split
     Ex) ale, scale
+    
