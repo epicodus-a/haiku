@@ -12,5 +12,12 @@ describe("Haiku", function(){
 
 
   });
-
+  it("should return an array when a string provided", function () {
+    // let reuseableHaiku = new Haiku("apple ", "banana", "orange");
+    expect(Array.isArray(reuseableHaiku.inputArr(reuseableHaiku.line1))).toBeTruthy();
+  });
+  
+  it("should return a word that does not have consecutive consonants", function() {
+    expect(reuseableHaiku.seperateDoubleConsonant("tea")).toBeTruthy();
+  });
 });
