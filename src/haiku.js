@@ -1,10 +1,10 @@
 // export {Haiku};
 
-export class Haiku{
-  constructor(line1, line2, line3){
-    this.line1 = line1;
-    this.line2 = line2;
-    this.line2 = line3;
+class Haiku{
+  constructor(a='', b='', c=''){
+    this.a = a;
+    this.b = b;
+    this.c = c;
   }
 
   inputArr(aStr){
@@ -40,14 +40,14 @@ export class Haiku{
 
   //re turn the number vowels in a string with one added if there were two consecutive consonants
   addOneForConsecConst(aStr){
-    let coutn1 = this.subtractOneFConstVowel(aStr);
+    let count1 = this.subtractOneFConstVowel(aStr);
     let count2 = 0;
     for(let i = 0; i < aStr.length - 1; i++){
       if(aStr[i].match(/[bcdfghjklmnpqrstvwxz]/gi) && aStr[i] === aStr[i+1]){
         count2 ++;
       }
     }
-    return coutn1 + count2;
+    return count1 + count2;
   }
 
   countInASentence(aSentence){
@@ -59,45 +59,10 @@ export class Haiku{
     return count;
   }
 
-
-  // doubleCons(start=0, aWord='appe'){
-  //   // aWord: a string with one pair of consecutive consonants
-  //   // return: an array of words which does not contain consecutive consonants
-  //   debugger;
-  //   let consonants = "bcdfghjklmnpqrstvwxz";
-  //   let singleConsWordsArr = [];
-  //   let doubleConsonant = false;
-  //   for(let i = start; i < aWord.length - 1 ; i ++){
-  //     if(consonants.indexOf(aWord[i]) !== -1 ){
-  //       if(consonants.indexOf(aWord[i+1]) !== -1){
-  //         singleConsWordsArr.push(aWord.substring(0, i+1));
-  //         start = aWord.substring(0, i+1).length;
-  //         // aWord = aWord.substring(i+1);
-  //         // doubleCons(start, aWord);
-  //         // singleConsWordsArr.push(aWord.substring(i+1));
-  //         doubleConsonant = true;
-  //       }
-  //     }
-  //   }
-  //   if(!doubleConsonant){
-  //     singleConsWordsArr.push(aWord);
-  //   }
-  //
-  //   return [singleConsWordsArr, start];
-  // }
-  //
-  //
-  // mutliDoubleCons(start, aWord){
-  //   // aWord: a string with more than one pair of consecutive consonants
-  //   // return : an array of words which does not contain consecutive consonants
-  //   let res = [];
-  //   let returnVal;
-  //   while(start < aWord.length){
-  //     returnVal = doubleCons(start, aWord));
-  //     start = returnVal[1];
-  //     res.extend(returnVal[0]);
-  //   }
-  //   return res;
-  // }
-
+  // check is_haiku
+  isHaiku(){
+    return this.countInASentence(this.a) === 5 && this.countInASentence(this.b)=== 7 && this.countInASentence(this.c) === 5;
+  }
 }
+
+export {Haiku};

@@ -14,9 +14,8 @@ spec
 
 
 - count the vowels in the word
-  - subtract "e" if at end of the word
-  - if there are two vowels next to each other
+  * subtract "e" if at end of the word
+  * if there are two vowels next to each other
 - Divide between two middle consonants.
 -  the letter before the 'le' a vowel = no split
     Ex) ale, scale
-    
