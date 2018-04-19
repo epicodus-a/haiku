@@ -3,6 +3,8 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import { Haiku } from "./haiku";
+import { wordGenerator } from "./wordGenerator";
+
 
 
 $(document).ready(function(){

@@ -44,6 +44,7 @@ describe("Haiku", function(){
   });
 
   it("should return true if input is haiku", function(){
-    expect(reuseableHaiku.isHaiku()).toBe(true);
+    expect(reuseableHaiku.isHaiku()).toBe(false);
   })
+
 });
