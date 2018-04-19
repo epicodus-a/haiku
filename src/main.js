@@ -8,22 +8,31 @@ import { HaikuGenerator } from "./HaikuGenerator";
 
 
 $(document).ready(function(){
-  $('form').submit(function(event){
+  let haikug = new HaikuGenerator(5,7,5);
+  let resArr = haikug.generateHaiku();
+
+  $('#fakeHaiku').submit(function(event){
     event.preventDefault();
-    debugger;
-    let a = $('input:text[name=line1]').val();
-    let b = $('input:text[name=line2]').val();
-    let c = $('input:text[name=line3]').val();
-    console.log(c);
 
-    let haiku = new Haiku(a, b, c);
+    $('#haikualike').click(function(){
+      let hk = '';
+      resArr.forEach(res => {
+        hk += `<p class='lead'>${res}</p>`;
+      });
+      $(".output").html(hk);
+    });
 
+  });
+
+  $('#isHaiku').submit(function(event){
+    event.preventDefault();
+
+    let haiku = new Haiku(resArr[0],resArr[1], resArr[2]);
     let result = haiku.isHaiku();
-
     if (result) {
-      $('.output').text("This is a beautiful haiku!");
+      $('.output2').text("This is a beautiful haiku!");
     } else {
-      $('.output').text("This is not a haiku, try again.");
+      $('.output2').text("This is not a haiku, try again.");
     }
   });
 });
