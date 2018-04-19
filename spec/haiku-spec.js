@@ -1,7 +1,6 @@
 import {Haiku} from "../src/Haiku";
 
 describe("Haiku", function(){
-  debugger;
   let reuseableHaiku;
   beforeEach(function(){
     reuseableHaiku = new Haiku("toward those short trees", "we saw a hawk briliant", "On a day in ring");
